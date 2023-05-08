@@ -142,23 +142,24 @@ public class UserService {
 	}
 
 	public boolean verify(String verificationCode) {
-		Optional<User> user = userRepository.findByVerificationCode(verificationCode);
-		if (user.isEmpty() || user.get().isActive()) {
-			return false;
-		} else {
-			user.get().setVerificationCode(null);
-			user.get().setActive(true);
-			userRepository.save(user.get());
-			return true;
-		}
+		// Optional<User> user = userRepository.findByVerificationCode(verificationCode);
+		// if (user.isEmpty() || user.get().isActive()) {
+		// 	return false;
+		// } else {
+		// 	user.get().setVerificationCode(null);
+		// 	user.get().setActive(true);
+		// 	userRepository.save(user.get());
+		// 	return true;
+		// }
+		return true;
 	}
 
 	public User signIn(String email, String password) {
-		Optional<User> user = userRepository.findByEmailAndPassword(email, password);
-		if (user.isEmpty()) {
-			return new User();
-		}
-		return user.get();
+		// Optional<User> user = userRepository.findByEmailAndPassword(email, password);
+		// if (user.isEmpty()) {
+		// 	return new User();
+		// }
+		return new User()
 	}
 
 }
