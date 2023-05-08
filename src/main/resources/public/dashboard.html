@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="theme-color" content="#141414" />
+    <meta name="msapplication-navbutton-color" content="#141414" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <title>Assets Management And Investment Dashboad | Welthaxcoin</title>
+    <link rel="stylesheet" href="./css/w3.css" />
+
+    <link rel="stylesheet" href="./materialize/css/materialize.min.css" />
+
+    <script src="./js/tailwind.js"></script>
+
+    <link rel="stylesheet" href="./css/colors.css" />
+    <link rel="stylesheet" href="./css/fonts.css" />
+
+    <link rel="stylesheet" href="./css/dashboard.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+  </head>
+  <body class="background-primary">
+    <div
+      id="menu"
+      style="
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        z-index: 1;
+        display: none;
+        justify-content: center;
+        backdrop-filter: blur(5px);
+        background-color: rgba(0, 0, 0, 0.445);
+        opacity: 0;
+      "
+    >
+      <div
+        id="menu-items"
+        class="background-primary rounded z-depth-2"
+        style="
+          position: absolute;
+          width: 95%;
+          height: fit-content;
+          margin-top: 62px;
+          display: block;
+          opacity: 0;
+        "
+      >
+        <div class="border-spc py-6 px-6 w3-row rounded pointer">
+          <div class="w3-col s2">
+            <img src="./images/investment.png" alt="" style="width: 40%" />
+          </div>
+          <div class="w3-col s10">
+            <div id="invest" class="font-bold w3-text-white">Invest</div>
+          </div>
+        </div>
+        <div class="border-spc py-6 px-6 w3-row rounded pointer">
+          <div class="w3-col s2">
+            <img src="./images/transfer.png" alt="" style="width: 40%" />
+          </div>
+          <div class="w3-col s10">
+            <div id="withdraw" class="font-bold w3-text-white">Withdraw</div>
+          </div>
+        </div>
+        <div class="border-spc py-6 px-6 w3-row rounded pointer">
+          <div class="w3-col s2">
+            <img src="./images/graph.png" alt="" style="width: 40%" />
+          </div>
+          <div class="w3-col s10">
+            <div id="withdraw-history" class="font-bold w3-text-white">
+              Withdrawal History
+            </div>
+          </div>
+        </div>
+
+        <div class="border-spc py-6 px-6 w3-row rounded pointer">
+          <div class="w3-col s2">
+            <img src="./images/network.png" alt="" style="width: 40%" />
+          </div>
+          <div class="w3-col s10">
+            <div id="refer-a-friend" class="font-bold w3-text-white">
+              Refer a Friend
+            </div>
+          </div>
+        </div>
+        <div class="border-spc py-6 px-6 w3-row rounded pointer">
+          <div class="w3-col s2">
+            <img src="./images/chart.png" alt="" style="width: 40%" />
+          </div>
+          <div class="w3-col s10">
+            <a href="./trading.html">
+              <div class="font-bold w3-text-white">Trade Room</div>
+            </a>
+          </div>
+        </div>
+        <div class="border-spc py-6 px-6 w3-row rounded pointer">
+          <div class="w3-col s2">
+            <img src="./images/chart.png" alt="" style="width: 40%" />
+          </div>
+          <div class="w3-col s10">
+            <a href="./retirement.html">
+              <div class="font-bold w3-text-white">Retirement Planning</div>
+            </a>
+          </div>
+        </div>
+        <div class="border-spc py-6 px-6 w3-row rounded pointer">
+          <div class="w3-col s2">
+            <img src="./images/chart.png" alt="" style="width: 40%" />
+          </div>
+          <div class="w3-col s10">
+            <a href="./real-estate.html">
+              <div class="font-bold w3-text-white">Real Estate</div>
+            </a>
+          </div>
+        </div>
+        <div class="py-6 px-6 w3-row rounded pointer">
+          <div class="w3-col s6" style="display: flex; align-items: center">
+            <span class="material-symbols-outlined" style="color: #ffffff">
+              account_circle
+            </span>
+            <span class="w3-text-white font-bold px-2" style="padding-top: 2px"
+              >Samuel Akor</span
+            >
+          </div>
+          <div class="w3-col s6" style="display: flex; justify-content: end">
+            <a href="/"
+              ><span class="material-symbols-outlined w3-text-red">
+                logout
+              </span></a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="wallet-modal"
+        class="rounded background-primary"
+        style="
+          display: none;
+          position: absolute;
+          width: 95%;
+          margin-top: 62px;
+          opacity: 0;
+        "
+      >
+        <div class="p-6">
+          <div>
+            <p id="fund-heading" class="w3-center text-2xl text-grey3 py-2">
+              Deposit
+            </p>
+
+            <div style="position: relative">
+              <p class="text-grey text-sm">CURRENCY</p>
+              <div>
+                <div class="input-field">
+                  <select id="select-crypto">
+                    <option value="" disabled selected>Select Crypto</option>
+                    <option value="btc">Bitcoin (BTC)</option>
+                    <option value="eth">Ethereum (ETH)</option>
+                    <option value="bnb">Binance (BNB)</option>
+                    <option value="usdt">USD Token (USDT)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="background-secondary px-4 py-6">
+          <div id="usd-info" class="payment-info gr" style="display: none">
+            <p class="w3-center text-xl text-grey3">Select Payment Method</p>
+            <hr class="border-grey" style="margin-top: 25px" />
+            <div class="w3-row pt-4 pb-2">
+              <div class="w3-col s10">
+                <span class="text-grey3">Via Wire</span>
+              </div>
+              <div class="w3-col s2">
+                <span class="material-symbols-outlined right text-grey3">
+                  navigate_next
+                </span>
+              </div>
+            </div>
+            <div class="py-2 text-grey3">
+              Sent from your financial institution to Welthaxcoin bank account.
+              No maximum deposit limits. Funds take 1-2 business days to show on
+              the platform.
+            </div>
+            <hr class="my-4 border-grey" />
+          </div>
+          <div id="btc-info" class="payment-info" style="display: block">
+            <p class="text-grey3">
+              <b class="w3-text-red">Warning</b> Depositing any other
+              Cryptocurrency besides Bitcoin to this address may result in the
+              total loss of your funds.
+            </p>
+            <p class="grey-text w3-center py-2">
+              WELTHAXCOIN BITCOIN WALLET ADDRESS
+            </p>
+            <div style="display: flex; justify-content: center">
+              <img src="./images/btc.jpg" alt="" style="width: 50%" />
+            </div>
+            <div class="w3-margin">
+              <input
+                class="w3-input w3-center w3-text-white"
+                type="text"
+                value="1MYUxuHcSCyMpYNPHQ9CQwZUan1Layw4q"
+                readonly="readonly"
+                style="background-color: #313131; border-radius: 2px"
+              />
+            </div>
+            <div class="w3-margin">
+              <div
+                class="w3-center small pointer copy text-grey3"
+                style="margin-top: 10px; font-weight: 600"
+              >
+                COPY
+              </div>
+            </div>
+          </div>
+          <div id="eth-info" class="payment-info animate" style="display: none">
+            <p class="text-grey3">
+              <b class="w3-text-red">Warning</b> Depositing any other
+              Cryptocurrency besides Ethereum to this address may result in the
+              total loss of your funds.
+            </p>
+            <p class="grey-text w3-center py-2">
+              WELTHAXCOIN ETHEREUM WALLET ADDRESS
+            </p>
+            <div style="display: flex; justify-content: center">
+              <img src="./images/eth.jpg" alt="" style="width: 50%" />
+            </div>
+
+            <div class="w3-margin">
+              <input
+                class="w3-input w3-center w3-text-white"
+                type="text"
+                value="0x6b05c4f98db3e2b20eb7d944b2cd6a12d53b"
+                readonly="readonly"
+                style="background-color: #313131; border-radius: 2px"
+              />
+            </div>
+            <div class="w3-margin">
+              <div
+                class="w3-center small pointer copy text-grey3"
+                style="margin-top: 10px; font-weight: 600"
+              >
+                COPY
+              </div>
+            </div>
+          </div>
+          <div id="bnb-info" class="payment-info animate" style="display: none">
+            <p class="text-grey3">
+              <b class="w3-text-red">Warning</b> Depositing any other
+              Cryptocurrency besides BNB to this address may result in the total
+              loss of your funds.
+            </p>
+            <p class="grey-text w3-center py-2">
+              WELTHAXCOIN BNB WALLET ADDRESS (BEP 20)
+            </p>
+            <div
+              class="w3-center"
+              style="display: flex; justify-content: center"
+            >
+              <img src="./images/bnb.jpg" alt="" style="width: 50%" />
+            </div>
+            <div class="w3-margin">
+              <input
+                class="w3-input w3-center w3-text-white"
+                type="text"
+                value="0x6b05c4f98db3e2b20eb7d944b2cd6a12d"
+                readonly="readonly"
+                style="background-color: #313131; border-radius: 2px"
+              />
+            </div>
+            <div class="w3-margin">
+              <div
+                class="w3-center small pointer copy text-grey3"
+                style="margin-top: 10px; font-weight: 600"
+              >
+                COPY
+              </div>
+            </div>
+          </div>
+          <div id="usdt-info" class="payment-info" style="display: none">
+            <p class="text-grey3">
+              <b class="w3-text-red">Warning</b> Depositing any other
+              Cryptocurrency besides Tether to this address may result in the
+              total loss of your funds.
+            </p>
+            <p class="grey-text w3-center py-2">
+              WELTHAXCOIN USDT WALLET ADDRESS (TRC 20)
+            </p>
+            <div
+              class="w3-center"
+              style="display: flex; justify-content: center"
+            >
+              <img src="./images/tether.jpg" alt="" style="width: 50%" />
+            </div>
+            <div class="w3-margin">
+              <input
+                class="w3-input w3-center w3-text-white"
+                type="text"
+                value="TPbyKkrhUMykyXkjzNm2vpPNRpX4ZBoHxd"
+                readonly="readonly"
+                style="background-color: #313131; border-radius: 2px"
+              />
+            </div>
+            <div class="w3-margin">
+              <div
+                class="w3-center pointer copy text-grey3"
+                style="margin-top: 10px; font-weight: 600"
+              >
+                COPY
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        id="withdrawal-modal"
+        style="
+          display: none;
+          position: absolute;
+          width: 95%;
+          margin-top: 62px;
+          opacity: 0;
+          z-index: 1;
+        "
+        class="w3-round px-4 py-8 background-secondary"
+        style="width: 30%; position: relative"
+      >
+        <div class="w3-center">
+          <p class="text-2xl text-grey3">Withdraw USD</p>
+          <p class="text-grey text-sm">Allow Listing is Off</p>
+          <p class="text-sm text-grey3">
+            All withdrawals are subject to 3 hours security hold and are
+            processed immediately by 6:00AM EST on weekdays and 8:00AM EST on
+            weekends
+          </p>
+        </div>
+        <input
+          class="w3-input"
+          type="number"
+          name=""
+          id="withdraw-etx"
+          style="border-bottom-color: rgb(50, 50, 50)"
+        />
+        <p class="text-sm text-accent">
+          Available to withdraw
+          <span id="available-to-withdraw" class="text-accent"></span> USD
+        </p>
+
+        <div class="w3-row">
+          <div class="w3-col s6">
+            <p class="text-sm text-grey3">
+              Fees: <span style="font-style: italic">Fees Waived</span>
+            </p>
+          </div>
+          <div class="w3-col s6">
+            <p class="text-sm w3-right text-grey3">0 USD</p>
+          </div>
+          <div class="w3-col s6">
+            <p class="text-sm text-grey3">You will receive</p>
+          </div>
+          <div class="w3-col s6">
+            <p class="text-sm w3-right text-grey3">0 USD</p>
+          </div>
+        </div>
+        <p class="text-sm text-accent">Withdrawal Terms</p>
+        <p class="text-sm grey-text" style="font-weight: 600">
+          Select an Account
+        </p>
+        <div class="input-field withdrawal">
+          <select id="select-crypto-wallet">
+            <option value="" disabled selected>Select crypto wallet</option>
+            <option value="">Bitcoin</option>
+            <option value="">Ethereum</option>
+          </select>
+        </div>
+        <div
+          id="withdraw-btn"
+          class="background-accent-inactive w3-text-white w3-center w3-round pointer font-bold py-4 mt-8 mb-4"
+        >
+          Receive withdrawal
+        </div>
+      </div>
+      <div id="refer-modal"
+      style="
+        display: none;
+        position: absolute;
+        width: 95%;
+        margin-top: 62px;
+        opacity: 0;
+        z-index: 1;
+      "
+      class="rounded background-secondary py-8 px-4"
+      style="width: 25%; margin-top: 100px"
+    >
+      <p class="w3-center text-2xl">Referral</p>
+      <p>
+        Copy your Welthaxcoin referral ID and share with friends to get
+        amazing bonuses
+      </p>
+      <div class="w3-padding-small w3-border w3-margin-top">
+        <input
+          id="referral-id"
+          type="text"
+          class="w3-text-white"
+          style="border: none; outline: none"
+          value="smksmidjijdi"
+        /><span
+          id="copy-referral"
+          class="fa fa-copy w3-right"
+          style="font-size: 18px"
+        ></span>
+      </div>
+      <div
+        class="w3-row w3-center"
+        style="margin: 28px 0px 10px; display: none"
+      >
+        <div class="w3-col s3">
+          <a id="facebook-share" href="">
+            <i class="fa fa-facebook" style="font-size: 18px"></i>
+          </a>
+        </div>
+        <div class="w3-col s3">
+          <a id="instagram-share" href="">
+            <i class="fa fa-instagram" style="font-size: 18px"></i>
+          </a>
+        </div>
+        <div class="w3-col s3">
+          <a id="telegram-share" href="">
+            <i class="fa fa-telegram" style="font-size: 18px"></i>
+          </a>
+        </div>
+        <div class="w3-col s3">
+          <a href="">
+            <i
+              id="whatsapp-share"
+              class="fa fa-whatsapp"
+              style="font-size: 18px"
+            ></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div
+      id="investment-plan-modal"
+      style="
+        display: none;
+        position: absolute;
+        width: 100%;
+        margin-top: 62px;
+        opacity: 0;
+        z-index: 1;
+      "
+    >
+      <div class="py-6">
+        <div>
+          <p class="w3-center text-2xl text-grey3 py-2 font-bold">
+            Investment Plans
+          </p>
+          <div>
+            <div class="carousel my-6">
+              <div
+                class="carousel-item"
+                style="height: fit-content; width: 85%"
+              >
+                <div class="py-4 px-6 background-secondary rounded">
+                  <p class="text-grey3 font-bold text-2xl text-center py-2">
+                    Starter Plan
+                  </p>
+                  <hr class="border-grey" />
+                  <p class="text-2xl text-center py-4">$200 - $999</p>
+                  <hr class="border-grey" />
+                  <p class="text-2xl text-center py-4">5% ROI</p>
+                  <hr class="border-grey" />
+                  <p class="text-center py-4">14 Days</p>
+                  <hr class="border-grey" />
+                  <button
+                    class="background-accent invest text-lg font-bold w-full py-3 rounded mt-6 mb-4"
+                    style="color: rgb(255, 255, 255)"
+                  >
+                    Invest
+                  </button>
+                </div>
+              </div>
+              <div
+                class="carousel-item"
+                style="height: fit-content; width: 85%"
+              >
+                <div class="py-4 px-6 background-secondary rounded">
+                  <p class="text-grey3 font-bold text-2xl text-center py-2">
+                    Basic Plan
+                  </p>
+                  <hr class="border-grey" />
+                  <p class="text-2xl text-center py-4">$1,000 - $9,999</p>
+                  <hr class="border-grey" />
+                  <p class="text-2xl text-center py-4">15% ROI</p>
+                  <hr class="border-grey" />
+                  <p class="text-center py-4">21 Days</p>
+                  <hr class="border-grey" />
+                  <button
+                    class="background-accent invest text-lg font-bold w-full py-3 rounded mt-6 mb-4"
+                    style="color: rgb(255, 255, 255)"
+                  >
+                    Invest
+                  </button>
+                </div>
+              </div>
+              <div
+                class="carousel-item"
+                style="height: fit-content; width: 85%"
+              >
+                <div class="py-4 px-6 background-secondary rounded">
+                  <p class="text-grey3 font-bold text-2xl text-center py-2">
+                    Standard Plan
+                  </p>
+                  <hr class="border-grey" />
+                  <p class="text-2xl text-center py-4">$10,000 - $29,999</p>
+                  <hr class="border-grey" />
+                  <p class="text-2xl text-center py-4">10% ROI</p>
+                  <hr class="border-grey" />
+                  <p class="text-center py-4">21 Days</p>
+                  <hr class="border-grey" />
+                  <button
+                    class="background-accent invest text-lg font-bold w-full py-3 rounded mt-6 mb-4"
+                    style="color: rgb(255, 255, 255)"
+                  >
+                    Invest
+                  </button>
+                </div>
+              </div>
+              <div
+                class="carousel-item"
+                style="height: fit-content; width: 85%"
+              >
+                <div class="py-4 px-6 background-secondary rounded">
+                  <p class="text-grey3 font-bold text-2xl text-center py-2">
+                    Advanced Plan
+                  </p>
+                  <hr class="border-grey" />
+                  <p class="text-2xl text-center py-4">$30,000 - $100,000</p>
+                  <hr class="border-grey" />
+                  <p class="text-2xl text-center py-4">35% ROI</p>
+                  <hr class="border-grey" />
+                  <p class="text-center py-4">21 Days</p>
+                  <hr class="border-grey" />
+                  <button
+                    class="background-accent invest text-lg font-bold w-full py-3 rounded mt-6 mb-4"
+                    style="color: rgb(255, 255, 255)"
+                  >
+                    Invest
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav>
+      <div
+        class="nav-wrapper valign-wrapper background-secondary pl-4 pr-8 py-2"
+        style="justify-content: space-between"
+      >
+        <a href="/">
+          <img
+            class="left"
+            src="./images/logo.png"
+            alt=""
+            style="width: 50px"
+          />
+        </a>
+
+        <div id="toggle-menu" class="container-bar pointer right">
+          <span class="bar1"></span>
+          <span class="bar2"></span>
+        </div>
+      </div>
+    </nav>
+
+    <section>
+      <div style="position: relative">
+        <div class="w3-center flex flex-col h-96 background-secondary pt-20">
+          <p class="text-3xl">Account Summary</p>
+          <p class="text-lg text-grey">TOTAL DOLLAR VALUE</p>
+          <p class="text-3xl">$13,600</p>
+        </div>
+
+        <div style="position: absolute; bottom: -260px; width: 100%">
+          <div style="width: 95%; height: fit-content; margin: 0px auto">
+            <div class="background-primary card z-depth-5 px-6 py-10">
+              <p class="text-3xl">Investment Account</p>
+              <p class="text-sm text-grey">INVESTMENT ACCOUNT BALANCE</p>
+              <p class="text-3xl">$20,100</p>
+              <div class="w3-row">
+                <div class="w3-col s6">
+                  <p class="text-sm text-grey">INVESTMENT PAID</p>
+                  <p class="text-3xl w3-text-white">$1,255.7</p>
+                </div>
+                <div class="w3-col s6">
+                  <p class="text-sm text-grey">ACCRUED INVESTMENT</p>
+                  <p class="text-3xl w3-text-white">$1,255.7</p>
+                </div>
+              </div>
+              <div
+                class="background-accent mt-8 mb-6"
+                style="height: 1px"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="p-4" style="margin-top: 300px">
+        <div class="carousel" style="height: 200px">
+          <div
+            class="carousel-item"
+            style="width: 100%; height: 200px; padding: 0px"
+          >
+            <div class="tradingview-widget-container">
+              <script
+                type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
+                async
+              >
+                  {
+                  "symbol": "BINANCE:BTCUSDT",
+                  "width": "100%",
+                  "height": 200,
+                  "locale": "en",
+                  "dateRange": "12M",
+                  "colorTheme": "dark",
+                  "isTransparent": true,
+                  "autosize": false,
+                  "trendLineColor": "#177464",
+                  "largeChartUrl": ""
+
+                }
+              </script>
+            </div>
+          </div>
+          <div
+            class="carousel-item"
+            style="width: 100%; height: 200px; padding: 0px"
+          >
+            <div class="tradingview-widget-container">
+              <script
+                type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
+                async
+              >
+                  {
+                  "symbol": "BINANCE:BTCUSDT",
+                  "width": "100%",
+                  "height": 200,
+                  "locale": "en",
+                  "dateRange": "12M",
+                  "colorTheme": "dark",
+                  "isTransparent": true,
+                  "autosize": false,
+                  "trendLineColor": "#177464",
+                  "largeChartUrl": ""
+                }
+              </script>
+            </div>
+          </div>
+          <div
+            class="carousel-item"
+            style="width: 100%; height: 200px; padding: 0px"
+          >
+            <div class="tradingview-widget-container">
+              <script
+                type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
+                async
+              >
+                  {
+                  "symbol": "BINANCE:BTCUSDT",
+                  "width": "100%",
+                  "height": 200,
+                  "locale": "en",
+                  "dateRange": "12M",
+                  "colorTheme": "dark",
+                  "isTransparent": true,
+                  "autosize": false,
+                  "trendLineColor": "#177464",
+                  "largeChartUrl": ""
+                }
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div>
+        <script id="coin-list" src="./widget/index.js"></script>
+        <div
+          id="crypto-widget-CoinList"
+          data-transparent="true"
+          data-theme="dark"
+          data-design="modern"
+          data-coin-ids="1,166,136,382,1120,20,440,29,1381,1986"
+        ></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="py-8">
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script
+            type="text/javascript"
+            src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js"
+            async
+          >
+              {
+              "colorTheme": "dark",
+              "isTransparent": true,
+              "largeChartUrl": "",
+              "displayMode": "regular",
+              "width": "100%",
+              "height": "830",
+              "symbol": "NASDAQ:TSLA",
+              "locale": "en"
+            }
+          </script>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <script src="./materialize/js/materialize.min.js"></script>
+    <script src="./anime-3.2.1/lib/anime.min.js"></script>
+    <script src="./js/dashboard.js"></script>
+  </body>
+</html>

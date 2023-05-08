@@ -1,0 +1,45 @@
+.background-primary {
+  background-color: #313131;
+  color: rgb(228, 228, 228);
+}
+.background-secondary {
+  background-color: rgb(39, 39, 39);
+  color: rgb(206, 206, 206);
+}
+.background-accent {
+  background-color: #c48c5b;
+  color: white;
+}
+
+.background-accent-inactive {
+  background-color: #c48c5b91;
+  color: rgb(133, 133, 133);
+}
+
+
+.background-accent2 {
+  background-color: rgb(221, 176, 89);
+}
+
+.background-grey {
+  background-color: rgb(241, 242, 244);
+}
+
+.background-green {
+  background-color: green;
+  color: white;
+}
+
+.text-grey {
+  color: rgba(206, 206, 206, 0.76);
+}
+.text-grey2 {
+  color: rgb(105, 105, 105);
+}
+.text-grey3 {
+  color: rgb(238, 238, 238);
+}
+.text-accent {
+  color: #e4ab78;
+}
+

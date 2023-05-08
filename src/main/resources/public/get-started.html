@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#002E9D" />
+    <meta name="msapplication-navbutton-color" content="#002E9D" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <title>
+      Commission-free Stock Trading and Investment App | Welthaxcoin
+    </title>
+
+    <link rel="stylesheet" href="./css/w3.css" />
+
+    <link rel="stylesheet" href="./materialize/css/materialize.min.css" />
+
+    <script src="./js/tailwind.js"></script>
+
+    <link rel="stylesheet" href="./css/colors.css" />
+    <link rel="stylesheet" href="./css/fonts.css" />
+
+    <link rel="stylesheet" href="./css/index.css" />
+
+    <link rel="stylesheet" href="./css/get-started.css" />
+
+    <link rel="stylesheet" href="./css/anim.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,300,0,0"
+    />
+  </head>
+  <body class="background-accent">
+    <script src="./js/moment.js"></script>
+    <section>
+      <div id="first" style="display: block">
+        <div
+          id="sign-up-card"
+          class="w3-center w3-padding w3-padding-48 w3-white card-form rounded"
+        >
+          <div id="sign-up-form-desc" class="sign-up-form-desc">
+            <p class="text-3xl font-bold px-24" style="line-height: 35px;">
+              Get Started with <span class="text-accent">Welthaxcoin</span>
+            </p>
+            <p class="text-2xl font-bold">Create Account</p>
+            <p class="w3-hide-large font-bold" style="margin: -12px 0px 0px">or</p>
+            <p
+              class="w3-hide-large no-margin font-bold text-accent pointer"
+              id="sign-in-prompt-mobile"
+            >
+              Sign in
+            </p>
+            <!-- <span
+              class="fab fa-facebook-f w3-padding-small circle pointer"
+            ></span>
+            <span class="fab fa-google w3-padding-small circle pointer"></span>
+            <span class="fab fa-twitter w3-padding-small circle pointer"></span>
+            <p>or use your email for registration</p> -->
+
+            <div class="input-field">
+              <i
+                class="material-symbols-outlined prefix"
+                style="color: rgb(138, 138, 138)"
+                >person</i
+              >
+              <input id="full-name" type="text" class="validate" />
+              <label for="full-name">Full Name</label>
+            </div>
+            <div class="input-field">
+              <i
+                class="material-symbols-outlined prefix"
+                style="color: rgb(138, 138, 138)"
+                >email</i
+              >
+              <input id="email" type="email" class="validate" />
+              <label for="email">Email</label>
+            </div>
+            <div class="input-field">
+              <i
+                class="material-symbols-outlined prefix"
+                style="color: rgb(138, 138, 138)"
+                >lock</i
+              >
+              <input id="password" type="password" class="validate" />
+              <label for="password">Password</label>
+            </div>
+            <div class="input-field">
+              <i
+                class="material-symbols-outlined prefix"
+                style="color: rgb(138, 138, 138)"
+                >lock</i
+              >
+              <input id="confirm-password" type="password" class="validate" />
+              <label for="confirm-password">Confirm Password</label>
+            </div>
+            <div class="input-field">
+              <i
+                class="material-symbols-outlined prefix"
+                style="color: rgb(138, 138, 138)"
+                >group</i
+              >
+              <input id="referral" type="text" class="validate" />
+              <label for="referral">Referral Id (Optional)</label>
+            </div>
+
+            <p
+              id="already-registered"
+              class="w3-text-red w3-center text-sm w3-padding"
+              style="display: none"
+            >
+              This Email is already registered on Welthaxcoin. Kindly sign in to
+              continue.
+            </p>
+
+            <p
+              id="wrong-referral"
+              class="w3-text-red w3-center text-sm w3-padding"
+              style="display: none"
+            >
+              The Referral ID does not belong to a User on Welthaxcoin. Kindly
+              check the ID and try again
+            </p>
+
+            <div class="button-padding">
+              <div
+                id="sign-up"
+                class="w3-margin background-accent-inactive w3-text-white w3-padding-large w3-center w3-round pointer font-bold"
+              >
+                SIGN UP
+              </div>
+            </div>
+          </div>
+          <div id="sign-in-form-desc" class="sign-in-form-desc w3-padding-48">
+            <p class="text-3xl px-32 font-bold" style="line-height: 35px;">
+              Continue with <span class="text-accent">Welthaxcoin</span>
+            </p>
+            <p class="text-2xl font-bold">Sign in to Welthaxcoin</p>
+            <!-- <span
+                class="fab fa-facebook-f w3-padding-small circle pointer"
+              ></span>
+              <span
+                class="fab fa-google w3-padding-small circle pointer"
+              ></span>
+              <span
+                class="fab fa-twitter w3-padding-small circle pointer"
+              ></span> -->
+            <p class="w3-hide-large bold" style="margin: -12px 0px 0px">or</p>
+            <p
+              class="w3-hide-large no-margin font-bold text-accent pointer"
+              id="sign-up-prompt-mobile"
+            >
+              Create Account
+            </p>
+            <div class="input-field">
+              <i
+                class="material-symbols-outlined prefix"
+                style="color: rgb(138, 138, 138)"
+                >email</i
+              >
+              <input id="email-2" name="email" type="text" class="validate" />
+              <label for="email-2">Email</label>
+            </div>
+            <div class="input-field">
+              <i
+                class="material-symbols-outlined prefix"
+                style="color: rgb(138, 138, 138)"
+                >lock</i
+              >
+              <input
+                id="password-2"
+                name="password"
+                type="password"
+                class="validate"
+              />
+              <label for="password-2">Password</label>
+            </div>
+
+            <p
+              id="incorrect-password"
+              class="w3-text-red w3-center text-sm"
+              style="display: none"
+            >
+              Your password is incorrect
+            </p>
+            <div>
+              <a href="#">Forgot your password?</a>
+            </div>
+            <div class="button-padding-2">
+              <div
+                id="sign-in"
+                class="w3-margin background-accent-inactive w3-text-white w3-padding-large w3-center w3-round pointer font-bold"
+                style="width: 90%; border: none"
+              >
+                Sign In
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="sign-in-prompt-card"
+          class="w3-center background-accent card-prompt w3-hide-small z-depth-1"
+        >
+          <div
+            id="sign-in-desc"
+            class="sign-in-desc"
+            style="padding: 200px 50px"
+          >
+            <p class="text-3xl font-bold w3-text-white">Welcome Back</p>
+            <p class="w3-text-white">
+              To keep connected with us, Kindly Sign in with your personal
+              detail
+            </p>
+            <div
+              id="sign-in-prompt"
+              class="w3-margin border w3-center w3-round w3-padding pointer w3-text-white"
+            >
+              SIGN IN
+            </div>
+          </div>
+          <div
+            id="sign-up-desc"
+            class="sign-up-desc w3-hide-small"
+            style="padding: 200px 50px"
+          >
+            <p class="text-3xl font-bold w3-text-white">Welcome</p>
+            <p class="w3-text-white">
+              Enter your details and create an account with Welthaxcoin
+            </p>
+            <div
+              id="sign-up-prompt"
+              class="w3-margin border w3-center w3-round w3-padding pointer w3-text-white"
+            >
+              SIGN UP
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div id="second" class="card-form2" style="display: none">
+        <div class="w3-white w3-padding w3-center w3-padding-32 rounded">
+          <p class="text-2xl text-accent">Welthaxcoin</p>
+          <p class="px-8">
+            An email has been sent to you from Welthaxcoin. Kindly verify your
+            Email to proceed
+          </p>
+          <a href="https://mail.google.com/mail">
+          <div
+            id="verify"
+            class="w3-margin background-accent w3-padding-large w3-center w3-round pointer font-bold w3-text-white"
+          >
+            Open Mailbox
+          </div>
+        </a>
+          <div style="display: flex; justify-content: end">
+            <div
+              id="resend-container"
+              class="w3-row background-grey w3-padding w3-round pointer"
+              style="width: 40%"
+            >
+              <div class="w3-col s10">
+                <div id="resend" class="w3-center" style="font-size: 13px">
+                  Resend Code
+                </div>
+              </div>
+              <div class="w3-col s2">
+                <div
+                  id="timer-container"
+                  class="no-margin small"
+                  style="font-weight: 600; font-size: 13px"
+                >
+                  <span id="timer">60s</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div id="third" class="card-form2" style="display: none">
+        <div class="w3-white w3-padding w3-center w3-padding-32">
+          <p class="text-2xl text-accent font-bold">Welthaxcoin</p>
+          <p id="correct-verification" class="px-20 font-bold py-2">Your Email has been verified with Welthaxcoin.</p>
+          <p id="wrong-verification" class="px-20 font-bold py-2 w3-text-red" style="display: none;">The Email sent to your mailbox is expired. Kindly request a new one</p>
+          <div
+            id="back-to-sign-in"
+            class="w3-margin background-accent w3-padding-large w3-center w3-round pointer font-bold"
+          >
+            Continue
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="./materialize/js/materialize.min.js"></script>
+    <script src="./anime-3.2.1/lib/anime.min.js"></script>
+    <script src="./js/getStarted.js"></script>
+  </body>
+</html>
